@@ -1,14 +1,7 @@
-import Hello from './Hello';
-import './App.css';
-import Wrapper from './Wrapper';
+import InputSample from './inputSample';
 
 function App() {
-    return (
-        <Wrapper>
-            <Hello name="react" color="red" isSpecial={true} />
-            <Hello color="pink" />
-        </Wrapper>
-    );
+    return <InputSample />;
 }
 
 export default App;
