@@ -1,7 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function User({ user, onRemove, onToggle }) {
     const { username, email, id, active } = user;
+
+    /*
+    //**dept에 값을 넣지 않는 경우
+    useEffect(() => {
+        console.log('컴포넌트가 화면에 나타남');
+        // props -> state
+        // REST API
+        // D3 Video.js
+        // setInterval, setTimeout
+        return () => {
+            //return에 선언된 함수는 뒷정리 함수라고 한다
+            //clearInterval, clearTimeout
+            //라이브러리 인스턴스 제거
+            console.log('컴포넌트가 화면에서 사라짐');
+        };
+    }, []);
+    */
+
+    /*
+    //**dept에 값을 넣는 경우
+    useEffect(() => {
+        console.log('user 값이 설정됨');
+        console.log(user);
+        return () => {
+            console.log('user 값이 바뀌기 전');
+            console.log(user);
+        };
+    }, [user]); //dept([])에 user를 넣으면 user가 값이 변할 때마다 실행
+    */
+
+    //**dept을 선언하지 않는 경우
+    useEffect(() => {
+        console.log(user);
+    });
+
     return (
         <div>
             <b
