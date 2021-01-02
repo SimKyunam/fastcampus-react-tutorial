@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-function User({ user, onRemove, onToggle }) {
+const User = React.memo(function User({ user, onRemove, onToggle }) {
     const { username, email, id, active } = user;
 
     /*
@@ -32,10 +32,12 @@ function User({ user, onRemove, onToggle }) {
     }, [user]); //dept([])에 user를 넣으면 user가 값이 변할 때마다 실행
     */
 
+    /*
     //**dept을 선언하지 않는 경우
     useEffect(() => {
         console.log(user);
-    });
+    }); //이벤트가 발생시 모든 user정보를 호출
+    */
 
     return (
         <div>
@@ -57,7 +59,7 @@ function User({ user, onRemove, onToggle }) {
             */}
         </div>
     );
-}
+});
 
 function UserList({ users, onRemove, onToggle }) {
     return (
@@ -74,4 +76,7 @@ function UserList({ users, onRemove, onToggle }) {
     );
 }
 
-export default UserList;
+export default React.memo(
+    UserList,
+    (prevProps, nextProps) => nextProps.users === prevProps.users
+);
