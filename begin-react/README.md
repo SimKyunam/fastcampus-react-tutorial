@@ -1,3 +1,10 @@
+1. 프로젝트 시작
+   yarn start
+
+2. 라이브러리 추가
+
+-   yarn add immer
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
