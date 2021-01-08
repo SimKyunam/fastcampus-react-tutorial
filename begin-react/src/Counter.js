@@ -7,7 +7,7 @@ class Counter extends Component {
     //         counter: 0,
     //     };
     //     // this.handleIncrease = this.handleIncrease.bind(this); //bind 해당 함수에 this를 정의해준다
-    //     // this.handleDecrease = this.handleDecrease.bind(this);
+    //     // this.handleDecrease = this.handleDecrease.bind(this); //bind를 안쓰려면 해당 함수에 화살표함수로 작성
     // }
 
     state = {
