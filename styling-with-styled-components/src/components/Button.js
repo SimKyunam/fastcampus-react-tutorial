@@ -14,6 +14,18 @@ const colorStyles = css`
             &:active {
                 background: ${darken(0.1, selected)};
             }
+
+            ${(props) =>
+                props.outline &&
+                css`
+                    color: ${selected};
+                    background: none;
+                    border: 1px solid ${selected};
+                    &:hover {
+                        background: ${selected};
+                        color: white;
+                    }
+                `}
         `;
     }}
 `;
@@ -36,26 +48,20 @@ const sizeStyles = css`
     ${({ size }) => css`
         height: ${sizes[size].height};
         font-size: ${sizes[size].fontSize};
-    `}/* 리팩토링 전 
+    `}
+`;
+
+const fullWidthStyle = css`
     ${(props) =>
-        props.size === 'large' &&
+        props.fullWidth &&
         css`
-            height: 3rem;
-            font-size: 1.25rem;
+            width: 100%;
+            justify-content: center;
+            &:not(:first-child) {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
         `}
-    ${(props) =>
-        props.size === 'medium' &&
-        css`
-            height: 2.25rem;
-            font-size: 1rem;
-        `}
-    ${(props) =>
-        props.size === 'small' &&
-        css`
-            height: 1.75rem;
-            font-size: 0.875rem;
-        `} 
-    */
 `;
 
 const StyledButton = styled.button`
@@ -72,18 +78,25 @@ const StyledButton = styled.button`
     padding-left: 1rem;
     padding-right: 1rem;
 
-    ${colorStyles}
-    ${sizeStyles}
-
     /* 기타 */
-    & + & {
+    &:not(:first-child) {
         margin-left: 1rem;
     }
+
+    ${colorStyles}
+    ${sizeStyles}
+    ${fullWidthStyle}
 `;
 
-function Button({ children, color, size, ...rest }) {
+function Button({ children, color, size, outline, fullWidth, ...rest }) {
     return (
-        <StyledButton color={color} size={size} {...rest}>
+        <StyledButton
+            color={color}
+            size={size}
+            outline={outline}
+            fullWidth={fullWidth}
+            {...rest}
+        >
             {children}
         </StyledButton>
     );
@@ -92,6 +105,7 @@ function Button({ children, color, size, ...rest }) {
 Button.defaultProps = {
     color: 'blue',
     size: 'medium',
+    fullWidth: false,
 };
 
 export default Button;
