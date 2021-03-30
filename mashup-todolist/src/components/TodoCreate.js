@@ -8,7 +8,7 @@ const CircleButton = styled.button`
         background: #63e6be;
     }
     &:active {
-        background: #20c997;
+        background: #20c994;
     }
 
     z-index: 5;
